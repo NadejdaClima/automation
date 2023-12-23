@@ -14,7 +14,7 @@ describe("Le primul feature file", function() {
         cy.visit("https://google.com");
     })
 
-    it("site-ul lui rahul shitty", function(){
+    it.only("site-ul lui rahul shitty", function(){
         cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/")
         cy.get('.search-keyword').type('ca')
         cy.get('.product:visible').should('have.length', 4)
