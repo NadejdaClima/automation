@@ -11,6 +11,16 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add("addToCart", (productName) => {
+    cy.get('div.card').each(($el) => {
+        const title = $el.find('h4.card-title').text()
+
+        if(title.includes(productName)){
+            // cy.pause() //debugging tool
+            cy.wrap($el).find('button.btn-info').click()
+        }
+    })
+})
 //
 //
 // -- This is a child command --
