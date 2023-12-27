@@ -2,7 +2,7 @@
 
 describe("Proceed to checkout", function() {
     it("The user is able to place an order", function() {
-        cy.visit('https://rahulshettyacademy.com/seleniumPractise/')
+        cy.visit(Cypress.env('url') + 'seleniumPractise/')
         cy.get('.search-keyword').type('Cauliflower')
         cy.get('.products .product').contains('ADD TO CART').click()
 

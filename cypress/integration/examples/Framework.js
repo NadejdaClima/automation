@@ -1,32 +1,52 @@
 ///<reference types = "Cypress"/>
 
 import data from '../../fixtures/frameworkData.json' //import JSON fixture
+import HomePage from '../examples/PageObjects/AngularPractice/HomePage'
+
 
 describe('Framework', () => {
+    const homePage = new HomePage
+
     beforeEach(() => {
-        cy.visit('https://rahulshettyacademy.com/angularpractice/')
+        cy.visit(Cypress.env('url') + 'angularpractice/')
     })
     it('Test using fixtures', () => {
         
 
-        cy.get('input[name="name"]:nth-child(2)').as('name')
+        homePage.name().as('name')
 
-        cy.get('@name').type(data.name)
-        cy.get('select').select(data.sex)
-        cy.get('input[name="name"].ng-untouched').should('have.value', data.name)
-        cy.get('@name').should('have.attr', 'minlength', 2)
+        homePage.name().type(data.name)
+        homePage.genderDropdown().select(data.sex)
+        homePage.dataBinderField().should('have.value', data.name)
+        homePage.name().should('have.attr', 'minlength', 2)
 
-        // cy.get('input#inlineRadio3').should('have.attr', 'disabled')
-        cy.get('input#inlineRadio3').should('be.disabled')
+        // homePage.entrepreneurCheck().should('have.attr', 'disabled')
+        homePage.entrepreneurCheck().should('be.disabled')
     })
 
-    it.only('Using generic methods', () => {
+    it('Using generic methods', () => {
+        //overriding cypress configuration for this spec only
+        Cypress.config('defaultCommandTimeout', 6000)
         cy.contains('Shop').click().url().should('contain', '/shop')
 
+        // changing the parameter starting with this step
+        Cypress.config('defaultCommandTimeout', 5000)
         data.productName.forEach((product)=>{
             cy.addToCart(product)
         })
         //Assert that the product was added to cart
-        cy.get('a.nav-link.btn').should('include.text', '2')
+        homePage.cartInfo().should('include.text', '2')
     })
+
+    //convert this ₹. 50000 to number:
+    // var bruteNumber = '₹. 50000'
+    // var price = bruteNumber.split(' ')// price[0] = "₹." price[1]="50000"
+    // price = price[1].trim() //remove any redundant spaces
+
+    // for each element in the  table find the correct price and add to sum variable
+    // sum = sum+price
+
+    //convert to number:
+    // Number(price)
+
  })
