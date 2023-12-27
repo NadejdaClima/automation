@@ -15,7 +15,7 @@ describe("Le primul feature file", () => {
     })
 
     it.only("site-ul lui rahul shitty", () => {
-        cy.visit(Cypress.env('url') + "seleniumPractise/#/")
+        cy.visit(Cypress.env('url') + "/seleniumPractise/#/")
         cy.get('.search-keyword').type('ca')
         cy.get('.product:visible').should('have.length', 4)
         // create alias

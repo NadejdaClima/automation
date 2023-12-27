@@ -5,7 +5,7 @@ describe("Spec to test checkboxes and drawdowns", function() {
     const homePage = new HomePage
 
     this.beforeEach(function() {
-        cy.visit(Cypress.env('url') + 'AutomationPractice/')
+        cy.visit(Cypress.env('url') + '/AutomationPractice/')
     })
 
     it('Checkboxes are functional', function() {

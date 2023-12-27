@@ -8,7 +8,7 @@ describe('Framework', () => {
     const homePage = new HomePage
 
     beforeEach(() => {
-        cy.visit(Cypress.env('url') + 'angularpractice/')
+        cy.visit(Cypress.env('url') + '/angularpractice/')
     })
     it('Test using fixtures', () => {
         

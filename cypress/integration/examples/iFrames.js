@@ -4,7 +4,7 @@ import 'cypress-iframe'
 
 describe('iframes are functional', function() {
     it('Verify that the user can navigate through the iFrame', function() {
-        cy.visit(Cypress.env('url') + 'AutomationPractice/')
+        cy.visit(Cypress.env('url') + '/AutomationPractice/')
         //switch to iFrame
         cy.frameLoaded('#courses-iframe')
         //navigate though the iFrame
