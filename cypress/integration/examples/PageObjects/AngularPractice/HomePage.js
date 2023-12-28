@@ -11,8 +11,9 @@ class HomePage {
     entrepreneurCheck() {
         return cy.get('input#inlineRadio3')
     }
-    cartInfo() {
-        return cy.get('a.nav-link.btn')
+
+    shopBtn() {
+        return cy.contains('Shop')
     }
 }
 export default HomePage

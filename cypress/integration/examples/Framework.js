@@ -2,6 +2,7 @@
 
 import data from '../../fixtures/frameworkData.json' //import JSON fixture
 import HomePage from '../examples/PageObjects/AngularPractice/HomePage'
+import ShopPage from './PageObjects/AngularPractice/ShopPage'
 
 
 describe('Framework', () => {
@@ -25,9 +26,10 @@ describe('Framework', () => {
     })
 
     it('Using generic methods', () => {
+        const shopPage = new ShopPage
         //overriding cypress configuration for this spec only
         Cypress.config('defaultCommandTimeout', 6000)
-        cy.contains('Shop').click().url().should('contain', '/shop')
+        homePage.shopBtn().click().url().should('contain', '/shop')
 
         // changing the parameter starting with this step
         Cypress.config('defaultCommandTimeout', 5000)
@@ -35,18 +37,6 @@ describe('Framework', () => {
             cy.addToCart(product)
         })
         //Assert that the product was added to cart
-        homePage.cartInfo().should('include.text', '2')
+        shopPage.cart().should('include.text', '2')
     })
-
-    //convert this ₹. 50000 to number:
-    // var bruteNumber = '₹. 50000'
-    // var price = bruteNumber.split(' ')// price[0] = "₹." price[1]="50000"
-    // price = price[1].trim() //remove any redundant spaces
-
-    // for each element in the  table find the correct price and add to sum variable
-    // sum = sum+price
-
-    //convert to number:
-    // Number(price)
-
  })
